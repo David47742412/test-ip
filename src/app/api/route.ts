@@ -1,4 +1,4 @@
-import {NextRequest, NextResponse} from "next/server";
+import {NextResponse} from "next/server";
 import {NextApiRequest} from "next";
 
 export function GET(req: NextApiRequest) {

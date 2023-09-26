@@ -1,10 +1,9 @@
 import {NextRequest, NextResponse} from "next/server";
+import {NextApiRequest} from "next";
 
-export function GET(req: NextRequest) {
+export function GET(req: NextApiRequest) {
+    const ip = req.headers['x-real-ip'] || req.socket.remoteAddress;
     return NextResponse.json({
-        ip_address_headers: req.headers.get("cf-connecting-ip"),
-        ip_address: req.ip,
-        ip_address_headers2: req.headers.get("cf-connecting-ip"),
-        user_agent: req.headers.get("user-agent"),
+        ip_address_headers: ip
     })
 }

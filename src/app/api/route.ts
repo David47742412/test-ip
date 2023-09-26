@@ -1,9 +1,8 @@
-import {NextResponse} from "next/server";
-import {NextApiRequest} from "next";
+import {NextRequest, NextResponse} from "next/server";
 
-export function GET(req: NextApiRequest) {
-    const ip = req.headers['x-real-ip'] || req.socket.remoteAddress;
+export function GET(req: NextRequest) {
+    const ip = req.geo;
     return NextResponse.json({
-        ip_address_headers: ip
+        ip_address_headers: ip ?? "undefined"
     })
 }
